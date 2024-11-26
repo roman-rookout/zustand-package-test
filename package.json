@@ -1,0 +1,18 @@
+{
+  "name": "zustand-package-test",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^8.1.9"
+  },
+  "scripts": {
+    "build-all": "npx lerna run build",
+    "install-all": "npx lerna exec -- npm install",
+    "react-app": "npx lerna run dev --scope testreactapp"
+  }
+}
