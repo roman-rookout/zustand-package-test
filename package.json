@@ -8,7 +8,10 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "lerna": "^8.1.9"
+    "lerna": "^8.1.9",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
   },
   "scripts": {
     "build-all": "npx lerna run build",
