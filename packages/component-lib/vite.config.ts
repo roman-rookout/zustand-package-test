@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import path, { resolve } from "path";
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import react from '@vitejs/plugin-react';
@@ -34,7 +34,12 @@ export default defineConfig((_) => {
       },
     },
     resolve: {
-      dedupe: ['react', 'react-dom'],
+      alias: {
+        react: path.resolve('../../node_modules/react'),
+        'react-dom': path.resolve('../../node_modules/react-dom'),
+        zustand: path.resolve('../../node_modules/zustand'),
+      },
+      dedupe: ['react', 'react-dom', 'zustand'],
     },
     // resolve: {
     //   alias: {
