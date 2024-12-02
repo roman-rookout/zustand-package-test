@@ -22,12 +22,11 @@ export default defineConfig((_) => {
       copyPublicDir: false
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'zustand'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          zustand: 'zustand',
         },
         assetFileNames: 'assets/[name][extname]',
         entryFileNames: '[name].js'
@@ -36,10 +35,9 @@ export default defineConfig((_) => {
     resolve: {
       alias: {
         react: path.resolve('../../node_modules/react'),
-        'react-dom': path.resolve('../../node_modules/react-dom'),
-        zustand: path.resolve('../../node_modules/zustand'),
+        'react-dom': path.resolve('../../node_modules/react-dom')
       },
-      dedupe: ['react', 'react-dom', 'zustand'],
+      dedupe: ['react', 'react-dom'],
     },
     // resolve: {
     //   alias: {

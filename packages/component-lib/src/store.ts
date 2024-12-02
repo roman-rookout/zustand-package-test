@@ -1,15 +1,34 @@
-import { create } from 'zustand';
+import { useState } from "react";
 
-type Store = {
-    count: number;
-    increment: () => void;
-    decrement: () => void;
-};
+const useStore = () => {
+    // Step 2: Initialize state
+    const [state, setState] = useState({
+      // Add your initial state properties here
+      count: 0,
+    });
+  
+    // Step 3: Create functions to update the state
+    const increment = () => {
+      setState(prevState => ({
+        ...prevState,
+        count: prevState.count + 1,
+      }));
+    };
 
-const useStore = create<Store>((set) => ({
-    count: 0,
-    increment: () => set((state) => ({ count: state.count + 1 })),
-    decrement: () => set((state) => ({ count: state.count - 1 })),
-}));
+    const decrement = () => {
+        setState(prevState => ({
+            ...prevState,
+            count: prevState.count - 1,
+        }));
+        }
+  
 
-export default useStore;
+    // Step 4: Return the state and the functions
+    return {
+      state,
+      increment,
+      decrement
+    };
+  };
+  
+  export default useStore;

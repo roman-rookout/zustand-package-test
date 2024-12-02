@@ -10,8 +10,7 @@ export default defineConfig({
     alias: {
       react: path.resolve('../../node_modules/react'),
       'react-dom': path.resolve('../../node_modules/react-dom'),
-      zustand: path.resolve('../../node_modules/zustand'),
     },
-    dedupe: ["react", "react-dom", "zustand"],
+    dedupe: ["react", "react-dom"],
   }
 })

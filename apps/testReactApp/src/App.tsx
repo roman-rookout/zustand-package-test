@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 function App() {
-  const { count, increment, decrement } = useTestStore();
+  const { state, increment } = useTestStore();
   //const number = useTestStore((state) => state.count);
 
 
@@ -19,7 +19,7 @@ function App() {
       </div>
       <h1>Zustand test</h1>
       <p>{testFromInside()}</p>
-      <p>{count}</p>
+      <p>{state.count}</p>
       <button onClick={() => increment()}>
         Increment
       </button>
