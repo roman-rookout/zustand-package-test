@@ -1,8 +1,8 @@
+import react from '@vitejs/plugin-react';
 import path, { resolve } from "path";
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-//import react from '@vitejs/plugin-react';
-import react from '@vitejs/plugin-react-swc';
+//import react from '@vitejs/plugin-react-swc';
 
 //import { viteExternalsPlugin } from "vite-plugin-externals";
 
@@ -11,7 +11,7 @@ export function logReactPath(): Plugin {
   return {
     name: 'log-react-path',
     configResolved(config) {
-     // const reactPath = config.resolve.alias;
+      // const reactPath = config.resolve.alias;
       console.log('React is resolved to:', JSON.stringify(config.resolve.alias));
     }
   };
@@ -21,9 +21,10 @@ export function logReactPath(): Plugin {
 export default defineConfig((_) => {
   return {
     plugins: [
-      react(), 
+      react(),
       dts({
-        insertTypesEntry: true
+        insertTypesEntry: true,
+        rollupTypes: true, //DORON, PART OF LATEST COMBINA
       }),
       logReactPath(),
       // viteExternalsPlugin({
@@ -34,25 +35,30 @@ export default defineConfig((_) => {
       //   lazy: ['React', 'lazy']
       // })
     ],
+    optimizeDeps: {
+      exclude: ['react', 'react-dom']
+    },
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        fileName: 'index',
-        formats: ['es'],
+        //fileName: 'index',
+        formats: ['es', 'umd'], //DORON PART OF UMD COMBINA
         name: 'zus-test',
+        //TODO: FOR DORON, this is some combina which is not working but was leading somewhere
+        //fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.cjs'
       },
       minify: false,
       copyPublicDir: false
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
         },
-        assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].js'
+        //  assetFileNames: 'assets/[name][extname]',
+        // entryFileNames: '[name].js'
       },
     },
     resolve: {
@@ -60,24 +66,8 @@ export default defineConfig((_) => {
         react: path.resolve(__dirname, '../../node_modules/react'),
         'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
       },
-      // alias: {
-      //   react: path.resolve('./node_modules/react'),
-      //   'react-dom': path.resolve('./node_modules/react-dom'),
-      // },
       dedupe: ['react', 'react-dom'],
     },
-    // resolve: {
-    //   alias: {
-    //     react: 'react',
-    //     'react-dom': 'react-dom'
-    //   }
-    // }
-
-    // resolve: {
-    //   alias: {
-    //     'react': '../../../node_modules' //path.resolve(__dirname, 'node_modules/react'),
-    //   },
-    // },
   }
 })
 

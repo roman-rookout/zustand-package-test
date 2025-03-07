@@ -18,6 +18,7 @@
     "install-all": "npx lerna exec -- npm install",
     "react-app": "npx lerna run dev --scope testreactapp",
     "react-app-prod": "npx lerna run preview --scope testreactapp",
-    "clean": "npx lerna clean --yes && rm -rf node_modules"
+    "clean": "npx lerna clean --yes && rm -rf node_modules",
+    "add": "PACKAGE_NAME=$1 npx lerna exec -- npm install $PACKAGE_NAME"
   }
 }

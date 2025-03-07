@@ -29,15 +29,17 @@ export default defineConfig(() => {
       //   lazy: ['React', 'lazy']
       // }, { disableInServe: true })
     ],
+    optimizeDeps: {
+      include: ['@test/component-lib']
+    },
     rollupOptions: {
-      //external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         // globals: {
         //   react: 'React',
         //   'react-dom': 'ReactDOM',
         // },
-        assetFileNames: 'assets/[name][extname]',
-        entryFileNames: '[name].js'
+       // assetFileNames: 'assets/[name][extname]',
+       // entryFileNames: '[name].js',
       },
     },
     resolve: {

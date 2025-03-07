@@ -45,8 +45,8 @@ function App() {
       <h1>Zustand test</h1>
       <TestComponent />
       <p>{testFromInside()}</p>
-      {/* <p>{state.count}</p>
-      <button onClick={() => increment()}>Increment</button> */}
+      <p>{state.count}</p>
+      <button onClick={() => increment()}>Increment</button>
     </>
   );
 }
