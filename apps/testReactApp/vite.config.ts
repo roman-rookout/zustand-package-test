@@ -6,9 +6,6 @@ import { viteSingleFile } from "vite-plugin-singlefile"
 // https://vite.dev/config/
 export default defineConfig(() => {
   return {
-    plugins: [react(), viteSingleFile()],
-    resolve: {
-      dedupe: ["react", "react-dom"],
-    },
+    plugins: [react(), viteSingleFile()]
   }
 })

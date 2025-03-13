@@ -7,16 +7,11 @@ import dts from 'vite-plugin-dts';
 // https://vitejs.dev/config/
 export default defineConfig((_) => {
   return {
-    plugins: [
-      react(),
-      dts()],
-    optimizeDeps: {
-      exclude: ['react', 'react-dom']
-    },
+    plugins: [react(),dts()],
     build: {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
-        formats: ['es', 'umd'], //DORON PART OF UMD COMBINA
+        formats: ['es', 'umd'],
         name: 'zus-test',
         fileName: (format) => `index.${format}.js`
       },
