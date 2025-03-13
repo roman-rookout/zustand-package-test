@@ -45,7 +45,7 @@ export default defineConfig((_) => {
         formats: ['es', 'umd'], //DORON PART OF UMD COMBINA
         name: 'zus-test',
         //TODO: FOR DORON, this is some combina which is not working but was leading somewhere
-        //fileName: (format) => format === 'es' ? 'index.es.js' : 'index.umd.cjs'
+        fileName: (format) => `index.${format}.js`
       },
       minify: false,
       copyPublicDir: false
