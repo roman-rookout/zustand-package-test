@@ -1,6 +1,6 @@
-import { testFromInside, useTestStore } from '@test/component-lib';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { testFromInside, useTestStore } from "@test/component-lib";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
 
 function App() {
   const { count, increment, decrement } = useTestStore();
